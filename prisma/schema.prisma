@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  DOCENTE
+  ALUMNO
+}
+
+enum AttendanceStatus {
+  PRESENT
+  LATE
+  ABSENT
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  passwordHash String
+  role      Role
+  phone     String?
+  createdAt DateTime @default(now())
+
+  gradesGiven   Grade[]       @relation("GradesGiven")
+  gradesReceived Grade[]      @relation("GradesReceived")
+  tasksCreated  Task[]        @relation("TasksCreated")
+  assignments   TaskAssignment[]
+  attendanceRecords Attendance[] @relation("AttendanceRecords")
+  attendanceTaken   Attendance[] @relation("AttendanceTaken")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  dueDate     DateTime?
+  createdAt   DateTime @default(now())
+  createdById String
+  createdBy   User     @relation("TasksCreated", fields: [createdById], references: [id])
+  assignments TaskAssignment[]
+  grades      Grade[]  @relation("TaskGrades")
+}
+
+model TaskAssignment {
+  id         String   @id @default(cuid())
+  taskId     String
+  studentId  String
+  assignedAt DateTime @default(now())
+  completedAt DateTime?
+
+  task    Task @relation(fields: [taskId], references: [id])
+  student User @relation(fields: [studentId], references: [id])
+}
+
+model Grade {
+  id          String   @id @default(cuid())
+  score       Float
+  comment     String?
+  createdAt   DateTime @default(now())
+  studentId   String
+  createdById String
+  taskId      String?
+
+  student   User @relation("GradesReceived", fields: [studentId], references: [id])
+  createdBy User @relation("GradesGiven", fields: [createdById], references: [id])
+  task      Task? @relation("TaskGrades", fields: [taskId], references: [id])
+}
+
+model Attendance {
+  id           String           @id @default(cuid())
+  date         DateTime
+  status       AttendanceStatus
+  createdAt    DateTime         @default(now())
+  studentId    String
+  recordedById String
+  note         String?
+
+  student    User @relation("AttendanceRecords", fields: [studentId], references: [id])
+  recordedBy User @relation("AttendanceTaken", fields: [recordedById], references: [id])
+}
