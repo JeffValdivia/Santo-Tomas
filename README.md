@@ -1,4 +1,9 @@
 # Santo Tomas
+Initial commit.
+
+# Santo Tomas
+
+# Santo Tomas
 
 # Sistema de Monitoreo Académico (Next.js)
 
