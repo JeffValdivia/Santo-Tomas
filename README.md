@@ -1,3 +1,5 @@
+# Santo Tomas
+
 # Sistema de Monitoreo Académico (Next.js)
 
 MVP con roles `admin`, `docente` y `alumno`, registro de alumnos, asignación de tareas, notas y comentarios, y notificaciones por WhatsApp.
