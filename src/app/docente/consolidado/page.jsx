@@ -39,29 +39,22 @@ export default function DocenteConsolidadoPage() {
   return (
     <DocenteMenuLayout>
       <div className="grid cols-2">
-        <section className="card">
+        <section className="card" style={{ gridColumn: '1 / -1' }}>
         <h2>Consolidado de asistencias</h2>
         <p className="badge">Inasistencias y métricas</p>
 
-        <label style={{ display: "block", marginTop: 12 }}>
-          Docente activo
-          <select
-            className="select"
-            value={docenteId}
-            onChange={(event) => setDocenteId(event.target.value)}
-          >
-            <option value="">Selecciona docente</option>
-            {docentes.map((docente) => (
-              <option key={docente.id} value={docente.id}>
-                {docente.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        
 
         <div className="card" style={{ padding: 16, marginTop: 16 }}>
           <h3>Resumen por alumno</h3>
-          <div className="grid" style={{ gap: 8, marginTop: 8 }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: 8,
+              marginTop: 8,
+            }}
+          >
             {consolidatedAttendance.map((item) => (
               <div key={item.id} className="card" style={{ padding: 12 }}>
                 <strong>{item.name}</strong>
@@ -91,9 +84,7 @@ export default function DocenteConsolidadoPage() {
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 12, color: "var(--muted)", marginTop: 8 }}>
-            Datos ficticios generados para visualización.
-          </p>
+          
         </div>
         </section>
       </div>

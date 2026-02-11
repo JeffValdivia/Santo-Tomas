@@ -21,21 +21,7 @@ export default function DocentePage() {
         <section className="card">
           <h2>Dashboard Docente</h2>
           <p className="badge">Curso asignado</p>
-          <label style={{ display: "block", marginTop: 12 }}>
-            Docente activo
-            <select
-              className="select"
-              value={docenteId}
-              onChange={(event) => setDocenteId(event.target.value)}
-            >
-              <option value="">Selecciona docente</option>
-              {docentes.map((docente) => (
-                <option key={docente.id} value={docente.id}>
-                  {docente.name}
-                </option>
-              ))}
-            </select>
-          </label>
+          
           <div className="card" style={{ padding: 16, marginTop: 12 }}>
             <strong>{courseInfo.name}</strong>
             <div style={{ color: "var(--muted)", fontSize: 12, marginTop: 4 }}>

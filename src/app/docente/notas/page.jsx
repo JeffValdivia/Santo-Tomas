@@ -44,21 +44,7 @@ export default function DocenteNotasPage() {
         <h2>Registro de notas</h2>
         <p className="badge">Carga de calificaciones</p>
 
-        <label style={{ display: "block", marginTop: 12 }}>
-          Docente activo
-          <select
-            className="select"
-            value={docenteId}
-            onChange={(event) => setDocenteId(event.target.value)}
-          >
-            <option value="">Selecciona docente</option>
-            {docentes.map((docente) => (
-              <option key={docente.id} value={docente.id}>
-                {docente.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        
 
         <div className="card" style={{ padding: 16, marginTop: 16 }}>
           <h3>Registrar nota</h3>

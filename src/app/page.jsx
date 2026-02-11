@@ -33,7 +33,7 @@ export default function HomePage() {
 
   return (
     <div className="login-hero">
-      <div className="login-overlay">
+      <div className="login-overlay" style={{ gridTemplateColumns: 'minmax(320px,420px)', justifyContent: 'center' }}>
         <div className="login-panel">
           <div>
             <div className="login-title">Iniciar Sesion</div>
@@ -59,30 +59,6 @@ export default function HomePage() {
           </form>
           {status ? <span className="muted">{status}</span> : null}
           <a className="muted" href="/login">¿Olvidaste tu contraseña?</a>
-        </div>
-        <div className="login-info">
-          <h3>Credenciales de acceso</h3>
-          <div className="login-info-card">
-            <div>
-              <strong>Admin</strong>
-              <div className="muted">admin@santotomas.edu</div>
-              <div className="muted">Admin123</div>
-            </div>
-          </div>
-          <div className="login-info-card">
-            <div>
-              <strong>Docente</strong>
-              <div className="muted">docente@santotomas.edu</div>
-              <div className="muted">Docente123</div>
-            </div>
-          </div>
-          <div className="login-info-card">
-            <div>
-              <strong>Alumno</strong>
-              <div className="muted">alumno@santotomas.edu</div>
-              <div className="muted">Alumno123</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -47,10 +47,7 @@ export default function DocenteAsistenciaPage() {
       return;
     }
 
-    if (!hasRealStudents) {
-      setAttendanceStatus("Datos ficticios: asistencia simulada");
-      return;
-    }
+    // allow submission even when using fallback students
 
     setAttendanceStatus("Registrando asistencia...");
     try {
@@ -84,21 +81,7 @@ export default function DocenteAsistenciaPage() {
         <h2>Registrar asistencia</h2>
         <p className="badge">Lista aleatoria con checks</p>
 
-        <label style={{ display: "block", marginTop: 12 }}>
-          Docente activo
-          <select
-            className="select"
-            value={docenteId}
-            onChange={(event) => setDocenteId(event.target.value)}
-          >
-            <option value="">Selecciona docente</option>
-            {docentes.map((docente) => (
-              <option key={docente.id} value={docente.id}>
-                {docente.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        
 
         <div className="card" style={{ padding: 16, marginTop: 16 }}>
           <h3>Lista de asistencia</h3>
