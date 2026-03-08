@@ -4,9 +4,9 @@ Proyecto migrado de Next.js a Nuxt 3, manteniendo la logica funcional:
 
 - Autenticacion con JWT en cookie
 - Control por roles (`ADMIN`, `DOCENTE`, `ALUMNO`)
-- CRUD basico de usuarios, tÁreas, notas y asistencia
+- CRUD basico de usuarios, Áreas, notas y asistencia
 - Reportes Académicos con Prisma + SQLite
-- Notificaciones WhatsApp (real o simulado)
+- Notificaciones WhatsApp (simulado)
 
 ## Stack
 
