@@ -1,35 +1,42 @@
-# Santo Tomas
-Initial commit.
+﻿# Sistema de Monitoreo Académico - Santo Tomas (Nuxt 3)
 
-# Santo Tomas
+Proyecto migrado de Next.js a Nuxt 3, manteniendo la logica funcional:
 
-# Santo Tomas
+- Autenticacion con JWT en cookie
+- Control por roles (`ADMIN`, `DOCENTE`, `ALUMNO`)
+- CRUD basico de usuarios, tÁreas, notas y asistencia
+- Reportes Académicos con Prisma + SQLite
+- Notificaciones WhatsApp (real o simulado)
 
-# Sistema de Monitoreo Académico (Next.js)
+## Stack
 
-MVP con roles `admin`, `docente` y `alumno`, registro de alumnos, asignación de tareas, notas y comentarios, y notificaciones por WhatsApp.
+- Nuxt 3 (Vue 3)
+- Nitro Server API
+- Prisma ORM
+- SQLite
 
 ## Requisitos
+
 - Node.js 18+
 
-## Configuración rápida
-1. Instala dependencias:
+## Configuracion local
+
+1. Instalar dependencias:
    - `npm install`
-2. Define variables en `.env`:
-   - `DATABASE_URL="file:./prisma/dev.db"`
-   - `AUTH_SECRET="cambia-este-secreto"`
-   - `WHATSAPP_TOKEN=`
-   - `WHATSAPP_PHONE_NUMBER_ID=`
-3. Inicializa base de datos (local):
-   - `npx prisma migrate dev --name init`
-   - `npx prisma db seed`
-4. Ejecuta:
+2. Crear `.env` desde `.env.example`
+3. Generar cliente Prisma:
+   - `npm run prisma:generate`
+4. Crear base de datos:
+   - `npm run prisma:migrate -- --name init`
+5. Cargar seed:
+   - `npm run prisma:seed`
+6. Ejecutar:
    - `npm run dev`
 
-## Accesos seed
+## Credenciales de prueba
+
 - Admin: `admin@santotomas.edu` / `Admin123`
 - Docente: `docente@santotomas.edu` / `Docente123`
 - Alumno: `alumno@santotomas.edu` / `Alumno123`
 
-## Notificaciones WhatsApp
-Se usa Meta WhatsApp Cloud API. Si no configuras las variables, el sistema simula los envíos.
+
